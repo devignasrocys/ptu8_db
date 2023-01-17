@@ -1,0 +1,25 @@
+-- SQLite
+-- SELECT firs_name, last_name FROM person;
+-- SELECT gender FROM person;
+-- SELECT DISTINCT gender FROM person;
+---- FILTRAVIMAS
+-- SELECT * FROM person WHERE gender="Female";
+-- SELECT * FROM person WHERE date_of_birth > date("1999-01-01");
+-- SELECT * FROM person
+--     WHERE date_of_birth > date("1999-01-01")
+--     AND date_of_birth < date("2003-01-01")
+--     AND gender = "Female";
+---- RUSIAVIMAS
+-- SELECT * FROM person ORDER BY last_name;
+-- SELECT * FROM person ORDER BY last_name DESC; -- Descending, atbulai
+-- SELECT * FROM person ORDER BY gender, last_name;
+-- SELECT * FROM person ORDER BY gender DESC, last_name, first_name;
+-- SELECT * FROM person ORDER BY date_of_birth DESC;
+---- GRUPAVIMAS
+-- SELECT gender, count(gender) AS count FROM person GROUP BY gender;
+-- SELECT gender, count(gender) AS count FROM person 
+--     WHERE date_of_birth >= "1988-01-01"
+--     GROUP BY gender
+--     HAVING count > 1; -- count(gender), dabar veiks kaip kintamasis, nereikia iskviesti funkcijos antra karta
+-- SELECT first_name || " " || last_name AS vardas 
+--         FROM person ORDER BY last_name; 

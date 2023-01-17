@@ -4,7 +4,8 @@ import os
 if not os.path.exists('data'):
     os.mkdir('data')
 
-conn = sqlite3.connect('data/darbuotojai.db')
+# conn = sqlite3.connect('data/darbuotojai.db')
+conn = sqlite3.connect('data/person.db')
 with conn:
     c = conn.cursor()
     c.execute("""

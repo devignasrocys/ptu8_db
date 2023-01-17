@@ -1,2 +1,12 @@
 -- SQLite
-SELECT vardas, pavarde FROM darbuotojai;
+-- Parodo kas yra duomenu bazeje
+SELECT * FROM darbuotojai;
+-- SELECT GIMIMO_DATA FROM darbuotojai;
+-- SELECT VARDAS,PAVARDĖ,PAREIGOS FROM darbuotojai;
+-- SELECT SKYRIUS_PAVADINIMAS FROM darbuotojai;
+-- SELECT * FROM darbuotojai WHERE SKYRIUS_PAVADINIMAS = 'Gamybos';
+-- SELECT * FROM darbuotojai WHERE VARDAS = 'Giedrius';
+-- SELECT * FROM darbuotojai WHERE GIMIMO_DATA = '1986-09-19';
+-- SELECT VARDAS FROM darbuotojai WHERE PAVARDĖ = 'Sabutis';
+-- SELECT VARDAS,PAVARDĖ FROM darbuotojai WHERE SKYRIUS_PAVADINIMAS = 'Gamybos';
+-- SELECT count(*) from DARBUOTOJAI WHERE PAREIGOS = "Testuotojas";
