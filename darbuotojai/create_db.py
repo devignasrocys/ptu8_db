@@ -5,7 +5,7 @@ if not os.path.exists('data'):
     os.mkdir('data')
 
 # conn = sqlite3.connect('data/darbuotojai.db')
-conn = sqlite3.connect('data/person.db')
+conn = sqlite3.connect('data/darbuotojai_02/darbuotojai2.db')
 with conn:
     c = conn.cursor()
     c.execute("""
