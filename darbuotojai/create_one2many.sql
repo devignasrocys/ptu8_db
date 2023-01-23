@@ -20,6 +20,32 @@ CREATE TABLE tasks (
     FOREIGN KEY (coder_id) REFERENCES coders (id)
 );
 
+CREATE TABLE skills (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE coders_skills (
+    coder_id INTEGER,
+    skill_id INTEGER,
+    FOREIGN KEY (coder_id) REFERENCES coders (id),
+    FOREIGN KEY (skill_id) REFERENCES skills (id)
+);
+
+CREATE TABLE passwords (
+    id INTEGER PRIMARY KEY NOT NULL,
+    coder_id INTEGER UNIQUE,
+    pwd VARCHAR(200),
+    FOREIGN KEY (coder_id) REFERENCES coders (id) -- foreign key sukuria indeksta toje lenteleje is kurios darome sasaja, kad greicaiu veiktu join. Pagal nurodyta lentele suindeksuojame turimos lenteles duomenis. 
+);
+
+SELECT f_name, skills.name FROM coders
+    JOIN coders_skills ON coder_id = coders.id
+    JOIN skills ON skill_id = skills.id;
+
+SELECT f_name, l_name, pwd FROM coders
+    JOIN passwords ON coder_id = coders.id;
+
 INSERT INTO "teams" ("name") VALUES ('Back End');
 INSERT INTO "teams" ("name") VALUES ('DevOps');
 INSERT INTO "teams" ("name") VALUES ('Front End');
@@ -48,3 +74,35 @@ SELECT f_name, l_name, name FROM teams JOIN coders ON team_id = teams.id;
 SELECT tasks.name as task,  f_name as coder, teams.name as team FROM tasks 
     JOIN coders ON coder_id = coders.id
     JOIN teams ON team_id = teams.id;
+
+INSERT INTO "skills" ("name") VALUES ('Python');
+INSERT INTO "skills" ("name") VALUES ('JS');
+INSERT INTO "skills" ("name") VALUES ('CSS');
+INSERT INTO "skills" ("name") VALUES ('Go');
+INSERT INTO "skills" ("name") VALUES ('AWS');
+INSERT INTO "skills" ("name") VALUES ('Linux');
+
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('1', '2');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('1', '3');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('2', '2');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('2', '3');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('3', '1');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('3', '4');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('4', '1');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('4', '6');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('5', '4');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('5', '5');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('6', '5');
+INSERT INTO "coders_skills" ("coder_id", "skill_id") VALUES ('6', '6');
+
+INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('1', '12345');
+INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('2', 'verisykret');
+INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('3', 'qwerty');
+INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('4', 'uauauai');
+INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('5', 'slaptazodis');
+INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('6', 'barzda');
+
+
+
+
+
